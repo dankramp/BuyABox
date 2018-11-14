@@ -1,0 +1,20 @@
+board:
+{
+	"name": "YLC Fundraiser",
+	"description": "We are raising money to help fund activities like Free Pancake nights and other weird stuff!!",
+	"owner": "dankramp",
+	"teams": [
+			"boys",
+			"girls"
+			],
+	"boxes": [...]
+
+}
+box: 
+{
+	"value": 1,
+	"bought": false,
+	"buyer": "Grandma Carol",
+	"message": "Love you sweetheart! Go get em",
+	"team": "girls"
+}
