@@ -3,73 +3,73 @@
         "name": "Test Fundraiser",
         "description": "Raising money for our test MVP",
         "owner": "dankramp",
-        "teams": [
-            "boys",
-            "girls"
-        ],
+        "teams": {
+            "boys": "#46f",
+            "girls": "#fbd"
+        },
         "boxes": [
-            "8823edd4-424c-4892-ab30-6396b7db4568",
-            "fb39445c-c3a2-46f5-ba3c-2ddb177347a8",
-            "f7288f6b-6c74-4aee-954d-2db90120e7e0",
-            "e9897e2d-4d29-4000-83a8-f321548590c0",
-            "3e1f8629-1899-410c-8257-ca9715fe0aa1",
-            "95837b5d-28a4-4b14-8faf-6140115d094a",
-            "da2b6efb-7dbe-4d9d-a2a7-6bc40111ae3a",
-            "3e5f27c0-32c4-4dfd-8b24-6baae7b8c0a6",
-            "067a900c-c495-477a-8c4e-c5360701c818",
-            "72a621d9-911e-4fc8-824a-6d93d2923102",
-            "17b87e17-123e-4521-8e04-8b1e23527f99",
-            "72780669-23b7-432b-b996-93c7658d1b4d",
-            "703a7ab9-d471-483e-aaad-e2400e18fa9e",
-            "2213a336-3545-4067-9645-c0bb48c034c8",
-            "03506f85-55d3-4ea8-8105-142196e6d75f",
-            "adfa5e1c-a8c9-4f1f-896f-bd41a8e0b512",
-            "bcad6bfb-b6d0-46ec-b08b-0646915258a2",
-            "86dacb38-b178-452a-9846-2d9a893d9cb7",
-            "049c2381-6951-4881-8997-2c87fd090b44",
-            "de0f7768-e3b3-49d4-a7fa-1c1c643622ca",
-            "fd01478c-60e4-4fb1-8a45-530bb0d7cc03",
-            "5783bded-cad2-4316-b846-05a9c970fdb9",
-            "0e8dd1c5-cebe-47e4-93b1-8569833c9d58",
-            "665601ab-7824-45b9-bb82-63cfee5ada70",
-            "c56694ba-3f59-4873-9b63-a87841f4eb6e",
-            "dfda80af-bb5f-454f-b40f-81ece154a18b",
-            "0f27befd-9c44-4280-8b1f-de2547c6d622",
-            "116dffb6-6335-4d28-8907-6c6e1f5a41b8",
-            "bb0a2a15-b86a-42a4-901f-433128b2cc3d",
-            "02b9c71c-4570-4a2c-9ffe-594f8cfad619",
-            "1db244f2-6256-4634-a214-0b3d3959fe68",
-            "807ab28e-99ec-411b-afbf-3b771706b5ea",
-            "f07bb1f6-7a17-4ade-babb-e8e2ac0331ca",
-            "34e36455-879a-4228-ab27-c0a32d5ae8df",
-            "09945c25-0ef5-497b-951d-b79191da634b",
-            "9c346610-a366-482c-b4a9-0a0900aa8f0d"
+            "5e0c2e50-08ab-4f89-a73e-cd66925a3d25",
+            "164b06c7-1df1-4b0f-86b5-a774aa330a2f",
+            "dc0f3438-1b69-4b1c-912c-f6b906752528",
+            "7a96748e-1358-4f3e-8e3e-eeb609741c9e",
+            "b929a4a3-ef99-4de0-9941-7f1ad0876799",
+            "d22242d1-3072-4b9b-890d-51e72d4071bc",
+            "de46acbb-a75f-43b3-b22e-38aca9a21b0a",
+            "76da9e34-3241-4d55-9406-cd8de5949468",
+            "2de6b11b-136d-4aee-8147-be0ceaa982e2",
+            "1a6a32fe-cccf-4075-96a4-8abde9cfe30f",
+            "0e6b9753-8d99-4a49-b6f7-606fd814b6b4",
+            "602bc19f-910a-495d-8378-6357b392c7f4",
+            "b08df49c-ce7f-4bc6-9019-e6830fa8e256",
+            "4dc79368-f4ca-42bb-bba6-fe1781ee6b6f",
+            "0574959a-1355-4bff-b0d8-79358edf640a",
+            "ad8b6a95-342b-4828-b461-08c3bde80597",
+            "1ca4a5fc-6e12-4503-98fa-c5c175e5d889",
+            "776efe63-c5df-4ff6-9b93-4db493bbe3c7",
+            "904e5dbe-0641-4028-a194-989dbb2f797c",
+            "37b07206-fcb9-48ac-bbe5-43bff99bc129",
+            "337421a9-573d-4205-b734-ae97fcba56b0",
+            "a0f65eee-2579-4be2-818a-d8b3742332a6",
+            "fbcb2cd3-6b25-41ff-876d-bb2a7b251e66",
+            "96101fd4-b2b5-447b-8fe0-ef6d042f7dcc",
+            "9cef65aa-1935-4196-af02-84a4802ba8ce",
+            "52a957f0-0892-440f-aaef-e66c533ad22c",
+            "8777e8fe-f47b-4807-b2b0-efa2ee564664",
+            "9d335bf6-1392-4f04-adc8-228be08cceef",
+            "f8996929-5ae4-48b9-8a40-df646b934d0f",
+            "8225265b-605f-41ce-a0fa-6978df7a2ca9",
+            "3b726572-6416-47da-8dae-6bca58efd1a1",
+            "02fd1079-2d16-4014-af12-2b1a2e12c164",
+            "7148945b-27e0-4d77-bbc9-274fe0b791d2",
+            "95e313a3-58a3-40ee-a05c-2b6292fd48da",
+            "d11052af-555a-44db-9996-05a9ae1b86eb",
+            "0d0c1422-fe01-4bde-9b22-2c9099f00256"
         ]
     },
     "boxes": [
         {
             "value": 1,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "8823edd4-424c-4892-ab30-6396b7db4568"
-        },
-        {
-            "value": 2,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "fb39445c-c3a2-46f5-ba3c-2ddb177347a8"
-        },
-        {
-            "value": 3,
             "bought": false,
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "f7288f6b-6c74-4aee-954d-2db90120e7e0"
+            "uuid": "5e0c2e50-08ab-4f89-a73e-cd66925a3d25"
+        },
+        {
+            "value": 2,
+            "bought": false,
+            "buyer": null,
+            "message": null,
+            "team": null,
+            "uuid": "164b06c7-1df1-4b0f-86b5-a774aa330a2f"
+        },
+        {
+            "value": 3,
+            "bought": true,
+            "buyer": "Grandma",
+            "message": "I'll buy you anything any day",
+            "team": "girls",
+            "uuid": "dc0f3438-1b69-4b1c-912c-f6b906752528"
         },
         {
             "value": 4,
@@ -77,31 +77,31 @@
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
             "team": "girls",
-            "uuid": "e9897e2d-4d29-4000-83a8-f321548590c0"
+            "uuid": "7a96748e-1358-4f3e-8e3e-eeb609741c9e"
         },
         {
             "value": 5,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "3e1f8629-1899-410c-8257-ca9715fe0aa1"
+            "bought": false,
+            "buyer": null,
+            "message": null,
+            "team": null,
+            "uuid": "b929a4a3-ef99-4de0-9941-7f1ad0876799"
         },
         {
             "value": 6,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "95837b5d-28a4-4b14-8faf-6140115d094a"
+            "team": "boys",
+            "uuid": "d22242d1-3072-4b9b-890d-51e72d4071bc"
         },
         {
             "value": 7,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "boys",
-            "uuid": "da2b6efb-7dbe-4d9d-a2a7-6bc40111ae3a"
+            "team": "girls",
+            "uuid": "de46acbb-a75f-43b3-b22e-38aca9a21b0a"
         },
         {
             "value": 8,
@@ -109,7 +109,7 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "3e5f27c0-32c4-4dfd-8b24-6baae7b8c0a6"
+            "uuid": "76da9e34-3241-4d55-9406-cd8de5949468"
         },
         {
             "value": 9,
@@ -117,55 +117,55 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "067a900c-c495-477a-8c4e-c5360701c818"
+            "uuid": "2de6b11b-136d-4aee-8147-be0ceaa982e2"
         },
         {
             "value": 10,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "boys",
-            "uuid": "72a621d9-911e-4fc8-824a-6d93d2923102"
+            "team": "girls",
+            "uuid": "1a6a32fe-cccf-4075-96a4-8abde9cfe30f"
         },
         {
             "value": 11,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "boys",
-            "uuid": "17b87e17-123e-4521-8e04-8b1e23527f99"
+            "bought": false,
+            "buyer": null,
+            "message": null,
+            "team": null,
+            "uuid": "0e6b9753-8d99-4a49-b6f7-606fd814b6b4"
         },
         {
             "value": 12,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "72780669-23b7-432b-b996-93c7658d1b4d"
+            "team": "boys",
+            "uuid": "602bc19f-910a-495d-8378-6357b392c7f4"
         },
         {
             "value": 13,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "703a7ab9-d471-483e-aaad-e2400e18fa9e"
-        },
-        {
-            "value": 14,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "2213a336-3545-4067-9645-c0bb48c034c8"
-        },
-        {
-            "value": 15,
             "bought": false,
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "03506f85-55d3-4ea8-8105-142196e6d75f"
+            "uuid": "b08df49c-ce7f-4bc6-9019-e6830fa8e256"
+        },
+        {
+            "value": 14,
+            "bought": false,
+            "buyer": null,
+            "message": null,
+            "team": null,
+            "uuid": "4dc79368-f4ca-42bb-bba6-fe1781ee6b6f"
+        },
+        {
+            "value": 15,
+            "bought": true,
+            "buyer": "Grandma",
+            "message": "I'll buy you anything any day",
+            "team": "boys",
+            "uuid": "0574959a-1355-4bff-b0d8-79358edf640a"
         },
         {
             "value": 16,
@@ -173,15 +173,15 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "adfa5e1c-a8c9-4f1f-896f-bd41a8e0b512"
+            "uuid": "ad8b6a95-342b-4828-b461-08c3bde80597"
         },
         {
             "value": 17,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "boys",
-            "uuid": "bcad6bfb-b6d0-46ec-b08b-0646915258a2"
+            "team": "girls",
+            "uuid": "1ca4a5fc-6e12-4503-98fa-c5c175e5d889"
         },
         {
             "value": 18,
@@ -189,7 +189,7 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "86dacb38-b178-452a-9846-2d9a893d9cb7"
+            "uuid": "776efe63-c5df-4ff6-9b93-4db493bbe3c7"
         },
         {
             "value": 19,
@@ -197,15 +197,15 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "049c2381-6951-4881-8997-2c87fd090b44"
+            "uuid": "904e5dbe-0641-4028-a194-989dbb2f797c"
         },
         {
             "value": 20,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "de0f7768-e3b3-49d4-a7fa-1c1c643622ca"
+            "team": "boys",
+            "uuid": "37b07206-fcb9-48ac-bbe5-43bff99bc129"
         },
         {
             "value": 21,
@@ -213,39 +213,39 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "fd01478c-60e4-4fb1-8a45-530bb0d7cc03"
+            "uuid": "337421a9-573d-4205-b734-ae97fcba56b0"
         },
         {
             "value": 22,
+            "bought": false,
+            "buyer": null,
+            "message": null,
+            "team": null,
+            "uuid": "a0f65eee-2579-4be2-818a-d8b3742332a6"
+        },
+        {
+            "value": 23,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
             "team": "girls",
-            "uuid": "5783bded-cad2-4316-b846-05a9c970fdb9"
-        },
-        {
-            "value": 23,
-            "bought": false,
-            "buyer": null,
-            "message": null,
-            "team": null,
-            "uuid": "0e8dd1c5-cebe-47e4-93b1-8569833c9d58"
+            "uuid": "fbcb2cd3-6b25-41ff-876d-bb2a7b251e66"
         },
         {
             "value": 24,
-            "bought": false,
-            "buyer": null,
-            "message": null,
-            "team": null,
-            "uuid": "665601ab-7824-45b9-bb82-63cfee5ada70"
+            "bought": true,
+            "buyer": "Grandma",
+            "message": "I'll buy you anything any day",
+            "team": "boys",
+            "uuid": "96101fd4-b2b5-447b-8fe0-ef6d042f7dcc"
         },
         {
             "value": 25,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "c56694ba-3f59-4873-9b63-a87841f4eb6e"
+            "team": "boys",
+            "uuid": "9cef65aa-1935-4196-af02-84a4802ba8ce"
         },
         {
             "value": 26,
@@ -253,15 +253,15 @@
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
             "team": "girls",
-            "uuid": "dfda80af-bb5f-454f-b40f-81ece154a18b"
+            "uuid": "52a957f0-0892-440f-aaef-e66c533ad22c"
         },
         {
             "value": 27,
-            "bought": false,
-            "buyer": null,
-            "message": null,
-            "team": null,
-            "uuid": "0f27befd-9c44-4280-8b1f-de2547c6d622"
+            "bought": true,
+            "buyer": "Grandma",
+            "message": "I'll buy you anything any day",
+            "team": "boys",
+            "uuid": "8777e8fe-f47b-4807-b2b0-efa2ee564664"
         },
         {
             "value": 28,
@@ -269,15 +269,15 @@
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
             "team": "girls",
-            "uuid": "116dffb6-6335-4d28-8907-6c6e1f5a41b8"
+            "uuid": "9d335bf6-1392-4f04-adc8-228be08cceef"
         },
         {
             "value": 29,
-            "bought": false,
-            "buyer": null,
-            "message": null,
-            "team": null,
-            "uuid": "bb0a2a15-b86a-42a4-901f-433128b2cc3d"
+            "bought": true,
+            "buyer": "Grandma",
+            "message": "I'll buy you anything any day",
+            "team": "girls",
+            "uuid": "f8996929-5ae4-48b9-8a40-df646b934d0f"
         },
         {
             "value": 30,
@@ -285,7 +285,7 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "02b9c71c-4570-4a2c-9ffe-594f8cfad619"
+            "uuid": "8225265b-605f-41ce-a0fa-6978df7a2ca9"
         },
         {
             "value": 31,
@@ -293,39 +293,39 @@
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
             "team": "boys",
-            "uuid": "1db244f2-6256-4634-a214-0b3d3959fe68"
+            "uuid": "3b726572-6416-47da-8dae-6bca58efd1a1"
         },
         {
             "value": 32,
-            "bought": true,
-            "buyer": "Grandma",
-            "message": "I'll buy you anything any day",
-            "team": "boys",
-            "uuid": "807ab28e-99ec-411b-afbf-3b771706b5ea"
-        },
-        {
-            "value": 33,
             "bought": false,
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "f07bb1f6-7a17-4ade-babb-e8e2ac0331ca"
+            "uuid": "02fd1079-2d16-4014-af12-2b1a2e12c164"
+        },
+        {
+            "value": 33,
+            "bought": true,
+            "buyer": "Grandma",
+            "message": "I'll buy you anything any day",
+            "team": "girls",
+            "uuid": "7148945b-27e0-4d77-bbc9-274fe0b791d2"
         },
         {
             "value": 34,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "34e36455-879a-4228-ab27-c0a32d5ae8df"
+            "team": "boys",
+            "uuid": "95e313a3-58a3-40ee-a05c-2b6292fd48da"
         },
         {
             "value": 35,
             "bought": true,
             "buyer": "Grandma",
             "message": "I'll buy you anything any day",
-            "team": "girls",
-            "uuid": "09945c25-0ef5-497b-951d-b79191da634b"
+            "team": "boys",
+            "uuid": "d11052af-555a-44db-9996-05a9ae1b86eb"
         },
         {
             "value": 36,
@@ -333,7 +333,7 @@
             "buyer": null,
             "message": null,
             "team": null,
-            "uuid": "9c346610-a366-482c-b4a9-0a0900aa8f0d"
+            "uuid": "0d0c1422-fe01-4bde-9b22-2c9099f00256"
         }
     ]
 }

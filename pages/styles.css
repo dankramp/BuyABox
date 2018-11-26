@@ -1,3 +1,47 @@
-body {
-	background: "#333";
+@keyframes animate_box_in {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+#board-div {
+	height: 600px;
+	background: #555;
+}
+.page-container {
+	background: #333;
+	height: 100%;
+	color: white;
+}
+.purchased-box {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+.purchased-box:hover {
+	cursor: pointer;
+}
+.stats {
+	background: #666;
+	padding: 10px;
+}
+.unpurchased-box, .purchased-box {
+	text-align: center;
+	font-size: 2em;
+	color: inherit;
+	height: 100px;
+	opacity: 0;
+	animation-name: animate_box_in;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+.unpurchased-box {
+	color: #888;
+	background: #555;
+	cursor: pointer;
+	transition: background .5s, color .5s;
+}
+.unpurchased-box:hover {
+	background: #885;
+	color: #fff;
+	text-decoration: none;
+	color: inherit;
 }

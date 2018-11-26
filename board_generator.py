@@ -6,7 +6,10 @@ board = {
     'name': "Test Fundraiser",
     'description': "Raising money for our test MVP",
     'owner': "dankramp",
-    'teams': ['boys', 'girls'],
+    'teams': {
+        'boys': '#46f',
+        'girls': '#fbd',
+    },
     'boxes': [],
 }
 
