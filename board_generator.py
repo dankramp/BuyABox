@@ -1,6 +1,7 @@
 from random import random
 import uuid
 import json
+import sys
 
 board = {
     'name': "Test Fundraiser",
@@ -32,5 +33,5 @@ response = {"board": board,
             "boxes": boxes
             }
 
-with open("./data/data.json", "w+") as f:
-    f.write(json.dumps(response, indent=4))
+print(json.dumps(response))
+sys.stdout.flush()
