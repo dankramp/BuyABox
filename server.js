@@ -1,17 +1,27 @@
 var express = require('express');
 var mysql = require('mysql')
 var app = express();
+var path = require('path');
 
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const db = require('./db.js')
 
+var boardRouter = express.Router();
 
 app.use( bodyParser.urlencoded({ extended : false }) );
 app.use(express.static(__dirname + '/www'));
+app.use(express.static(__dirname + '/static'));
 app.use(passport.initialize());
 app.use(passport.session());
+
+boardRouter.route('/:id')
+    .get(function(req, res) {
+	res.sendFile(path.join(__dirname + '/www/board.html'));
+    });
+
+app.use('/board', boardRouter);
 
 
 require('./passport.js');
@@ -171,3 +181,4 @@ app.post('/buyBox',function(req,res){
     }
   });
 });
+

@@ -71,4 +71,5 @@ function loadPage() {
 }
 
 // Wait a second then fetch data
-window.setTimeout(getRequest('/getBoard'), 1000);
+let id = window.location.pathname.substring(7);
+window.setTimeout(getRequest('/getBoard?id=' + id), 1000);
