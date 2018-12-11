@@ -1,29 +1,59 @@
 var express = require('express');
 var mysql = require('mysql')
 var app = express();
+
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+const db = require('./db.js')
 
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: 'capstone2018',
-    database: 'buyabox'
-});
 
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
-
-global.db = db;
-
+app.use( bodyParser.urlencoded({ extended : false }) );
 app.use(express.static(__dirname + '/www'));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+require('./passport.js');
 
 app.listen('3000');
 console.log('working on 3000');
+
+app.post('/signup', passport.authenticate('signup', { session : false }) , async (req, res, next) => {
+  res.json({
+    message : 'Signup successful',
+    user : req.user
+  });
+});
+
+app.post('/login', async (req, res, next) =>
+{
+  console.log(req.body)
+  passport.authenticate('login', async (err, user, info) =>
+  {
+    try {
+      if(err || !user){
+        console.log(info)
+        const error = new Error('An Error occured')
+        return next(error);
+      }
+      req.login(user, { session : false }, async (error) =>
+      {
+        if( error ) return next(error)
+        //We don't want to store the sensitive information such as the
+        //user password in the token so we pick only the email and id
+        const body = { _id : user._id, email : user.email };
+        //Sign the JWT token and populate the payload with the user email and id
+        const token = jwt.sign({ user : body },'top_secret');
+        //Send back the token to the user
+        return res.json({ token });
+      });
+    }
+    catch (error) {
+      return next(error);
+    }
+  })(req, res, next);
+});
 
 app.get('/getBoard', function (req, res) {
   if(!req.query.id){
@@ -41,6 +71,7 @@ app.get('/getBoard', function (req, res) {
       if (!result.length){
         res.status(500).send('Board Not Found')
       }else{
+        console.log(result[0]['teams'])
         let boxquery = "SELECT * FROM `boxes` WHERE board_id = '" + boardId + "' ";
         db.query(boxquery, (err,boxes)=>{
           if (err){
@@ -49,7 +80,7 @@ app.get('/getBoard', function (req, res) {
           else{
             console.log(result)
             result[0]['boxes'] = boxes
-            res.send(result)
+            res.json(result)
           }
         });
       }
@@ -71,23 +102,24 @@ app.get('/getBox', function (req, res) {
       return res.status(500).send(err)
     }
     else{
-      res.send(result)
+      res.json(result)
     }
   });
 
 
 });
 
-app.post('/createBoard',function(req,res){
-  if(!req.body.owner || !req.body.description || !req.body.name){
+app.post('/createBoard',passport.authenticate('jwt', { session : false }), async (req, res, next) => {
+  console.log(req.user.email)
+  if(!req.body.description || !req.body.name){
     res.status(500).send('Invalid Parameters')
     return
   }
 
   let desc=req.body.description;
-  let owner=req.body.owner;
+  let owner=req.user.email;
   let name=req.body.name;
-  let teams=JSON.stringify(req.body.teams);
+  let teams=req.body.teams;
   let query = "INSERT INTO `boards` (description, owner, name, teams) VALUES (?, ?, ?, ?)";
   db.query(query, [desc,owner,name,teams], function(err, result){
     if (err){
@@ -101,7 +133,6 @@ app.post('/createBoard',function(req,res){
         let value = i
         params.push([board_id, value])
       }
-      console.log(params)
 
       let boxquery = "INSERT INTO `boxes` (board_id, value) VALUES ?";
       db.query(boxquery, [params], function(err, result){
@@ -109,7 +140,8 @@ app.post('/createBoard',function(req,res){
           return res.status(500).send(err)
         }
         else{
-          res.send(result)
+          res.json({'status':'success',
+                    'id':board_id})
         }
       })
     }
@@ -135,7 +167,7 @@ app.post('/buyBox',function(req,res){
       return res.status(500).send(err)
     }
     else{
-      res.send(result)
+      res.json({'status':'success'})
     }
   });
 });
