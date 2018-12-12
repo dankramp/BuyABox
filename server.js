@@ -10,7 +10,11 @@ const db = require('./db.js')
 
 var boardRouter = express.Router();
 
-app.use( bodyParser.urlencoded({ extended : false }) );
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
 app.use(express.static(__dirname + '/www'));
 app.use(express.static(__dirname + '/static'));
 app.use(passport.initialize());
@@ -89,8 +93,9 @@ app.get('/getBoard', function (req, res) {
           }
           else{
             console.log(result)
-            result[0]['boxes'] = boxes
-            res.json(result)
+            result[0]['teams'] = JSON.parse(result[0]['teams'])
+            res.json({"board":result[0],
+                      "boxes": boxes})
           }
         });
       }
@@ -121,6 +126,7 @@ app.get('/getBox', function (req, res) {
 
 app.post('/createBoard',passport.authenticate('jwt', { session : false }), async (req, res, next) => {
   console.log(req.user.email)
+  console.log(req.body)
   if(!req.body.description || !req.body.name){
     res.status(500).send('Invalid Parameters')
     return
@@ -131,7 +137,7 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
   let name=req.body.name;
   let teams=req.body.teams;
   let query = "INSERT INTO `boards` (description, owner, name, teams) VALUES (?, ?, ?, ?)";
-  db.query(query, [desc,owner,name,teams], function(err, result){
+  db.query(query, [desc,owner,name,JSON.stringify(teams)], function(err, result){
     if (err){
       return res.status(500).send(err)
     }
@@ -139,7 +145,7 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
       let board_id = result.insertId
 
       params = []
-      for(let i = 1; i<26; i++){
+      for(let i = 1; i<37; i++){
         let value = i
         params.push([board_id, value])
       }
@@ -181,4 +187,3 @@ app.post('/buyBox',function(req,res){
     }
   });
 });
-

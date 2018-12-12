@@ -8,6 +8,7 @@ function updateBoard(board_div, teams) {
     var i;
     for (i = 0; i < 36; i++) {
 	var box = data['boxes'][i];
+  console.log(box)
 	if (box['bought']) { // box has been bought
 	    var t = teams[box['team']];
 	    board_html += "<a class='popover-dismiss col-2 purchased-box' role='button' tabindex='0' data-toggle='popover' data-trigger='focus' title='" + box['buyer'] + "' data-content=\"" + box['message'] + "\" style='animation-delay: " + i / 64 + "s; background: " + t['color'] + ";'>$" + box['value'] + "</a>";
@@ -16,7 +17,7 @@ function updateBoard(board_div, teams) {
 
 	} else { // not bought
 	    board_html += "<div class='col-2 unpurchased-box' style='animation-delay: " + i / 64 + "s;'>$" + box['value'] + "</div>";
-	}	
+	}
     }
     board_html += "</div>";
     board_div.empty();
@@ -53,6 +54,7 @@ function loadPage() {
     var stats_div = $('#stats-div');
 
     var teams = {};
+    console.log(data)
     for (var e in data['board']['teams']) {
 	teams[e] = {
 	    'color': data['board']['teams'][e],
