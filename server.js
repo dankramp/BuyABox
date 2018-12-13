@@ -196,3 +196,11 @@ app.get('/login', function (req, res) {
 app.get('/signup', function (req, res) {
     res.sendFile(path.join(__dirname + '/www/signup.html')); 
 });
+
+app.get('/test', function (req, res) {
+    const spawn = require("child_process").spawn;
+    const pythonProcess = spawn('python3',["board_generator.py"]);
+    pythonProcess.stdout.on('data', (data) => {
+	res.json(JSON.parse(data.toString()));
+    });    
+});
