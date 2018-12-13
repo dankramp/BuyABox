@@ -42,6 +42,8 @@ function getRequest(url) {
 	if (this.readyState == 4 && this.status == 200) {
 	    data = JSON.parse(this.responseText);
 	    loadPage();
+	} else if (this.status == 500) {
+	    console.log("Board not found");
 	}
     };
     xhttp.open("GET", url, true);

@@ -187,3 +187,12 @@ app.post('/buyBox',function(req,res){
     }
   });
 });
+
+
+app.get('/login', function (req, res) {
+    res.sendFile(path.join(__dirname + '/www/login.html')); 
+});
+
+app.get('/signup', function (req, res) {
+    res.sendFile(path.join(__dirname + '/www/signup.html')); 
+});
