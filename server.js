@@ -10,6 +10,8 @@ const db = require('./db.js')
 
 var boardRouter = express.Router();
 
+var TEST_MODE = true;
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -179,8 +181,11 @@ app.post('/buyBox',function(req,res){
 
   let query = "UPDATE boxes SET buyer=IF(!bought,?,buyer), message=IF(!bought,?,message), team=IF(!bought,?,team), bought=IF(bought=0,1,1) WHERE id=?"
 
-  db.query(query, [buyer,message,team,boxId], function(err, result){
-      if (err){
+    db.query(query, [buyer,message,team,boxId], function(err, result){
+	if (TEST_MODE) {
+	    res.json({'status':'success'})
+	}
+      else if (err){
 	  console.log("db err")
       return res.status(500).send(err)
     }

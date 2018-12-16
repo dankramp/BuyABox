@@ -51,7 +51,7 @@
 	  </div>
 	  <div class="modal-body">
 	    <form action="/buyBox" method="post" id="buyBoxForm">
-	      <input type="text" id="buyFormId" class="hidden" name="id">
+	      <input type="text" id="buyModalId" style="display: none;" name="id">
 	      <div class="form-group">
 		<label for="buyModalName">Your Name</label>
 		<input type="text" class="form-control" name="buyer" id="buyModalName" placeholder="Enter your name">
@@ -71,6 +71,26 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" id="purchase-btn">Purchase!</button>
 	  </div>	
+	</div>
+      </div>
+    </div>
+
+    <!-- Something went wrong modal -->
+    <div class="modal fade" id="badModal" tabindex="-1" role="dialog" aria-labelledby="badModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Uh oh...</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+	  </div>
+	  <div class="modal-body">
+            Something went wrong. Please try again later.
+	  </div>
+	  <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	  </div>
 	</div>
       </div>
     </div>

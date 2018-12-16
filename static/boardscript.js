@@ -2,8 +2,9 @@
 
 var data = undefined;
 var try_test = true;
+var teams = {};
 
-function updateBoard(board_div, teams) {
+function updateBoard(board_div) {
     var amt_raised = 0;
     var board_html = "<div class='row'>";
     var i;
@@ -16,16 +17,20 @@ function updateBoard(board_div, teams) {
 	    t['amount'] += box['value'];
 
 	} else { // not bought
-	    board_html += "<a data-toggle='modal' data-target='#buyModal' data-value='" + box['value'] + "' class='col-2 unpurchased-box' style='animation-delay: " + i / 64 + "s;'>$" + box['value'] + "</a>";
+	    board_html += "<a data-toggle='modal' data-target='#buyModal' data-value='" + box['value'] + "' data-id='" + box['uuid'] + "' class='col-2 unpurchased-box' style='animation-delay: " + i / 64 + "s;'>$" + box['value'] + "</a>";
 	}
     }
     board_html += "</div>";
     board_div.empty();
     board_div.append(board_html);
+    $('.popover-dismiss').popover({
+	trigger: 'focus',
+	placement: 'auto'
+    });
     return amt_raised;
 }
 
-function updateStats(amt_raised, teams) {
+function updateStats(amt_raised) {
     const total_amt = 666;
     // Description
     $('#description-p').empty().append(data['board']['description']);
@@ -58,10 +63,30 @@ function postBuyBox() {
     $.post("/buyBox", form.serialize())
 	.done(function(data) {
 	    console.log(data);
+	    buy_success();
 	})
 	.fail(function() {
+	    console.log("fail");
 	    // if it fails
+	    $('#badModal').modal('show');
 	});
+}
+
+function buy_success() {
+    let id = $('#buyModalId').val();
+    var i = 0;
+    for (; i < 36; i++) {
+	if (data['board']['boxes'][i] == id)
+	    break;
+    }
+    var box = data['boxes'][i];
+    box['bought'] = true;
+    box['buyer'] = $('#buyModalName').val();
+    box['message'] = $('#buyModalText').val();
+    box['team'] = $('#buyModalSelect').val();
+    
+    $('#buyModal').modal('hide');
+    updateBoard($('#board-div'));
 }
 
 function loadPage() {
@@ -70,7 +95,6 @@ function loadPage() {
     var stats_div = $('#stats-div');
     var select = $('#buyModalSelect');
 
-    var teams = {};
     for (var e in data['board']['teams']) {
 	teams[e] = {
 	    'color': data['board']['teams'][e],
@@ -85,12 +109,8 @@ function loadPage() {
 
     // Update viewport with data
     board_title.html(data['board']['name']);
-    var amt_raised = updateBoard(board_div, teams);
-    $('.popover-dismiss').popover({
-	trigger: 'focus',
-	placement: 'auto'
-    });
-    updateStats(amt_raised, teams);
+    var amt_raised = updateBoard(board_div);
+    updateStats(amt_raised);
 }
 
 // Wait a second then fetch data
@@ -104,6 +124,9 @@ $('#buyModal').on('show.bs.modal', function (event) {
     var value = button.data('value');
     var modal = $(this);
     // Get box ID and populate hidden field
+    var id = button.data('id');
+    console.log(id);
+    $('#buyModalId').val(id);
     modal.find('.modal-title').text('Purchase $' + value + ' box');
 });
 
