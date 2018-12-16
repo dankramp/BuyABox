@@ -167,7 +167,8 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
 
 app.post('/buyBox',function(req,res){
   if(!req.body.id || !req.body.buyer || !req.body.message || !req.body.team){
-    res.status(500).send('Invalid Parameters')
+      res.status(500).send('Invalid Parameters')
+      console.log("invalid params")
     return
   }
 
@@ -179,7 +180,8 @@ app.post('/buyBox',function(req,res){
   let query = "UPDATE boxes SET buyer=IF(!bought,?,buyer), message=IF(!bought,?,message), team=IF(!bought,?,team), bought=IF(bought=0,1,1) WHERE id=?"
 
   db.query(query, [buyer,message,team,boxId], function(err, result){
-    if (err){
+      if (err){
+	  console.log("db err")
       return res.status(500).send(err)
     }
     else{

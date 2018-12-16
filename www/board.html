@@ -51,9 +51,10 @@
 	  </div>
 	  <div class="modal-body">
 	    <form action="/buyBox" method="post" id="buyBoxForm">
+	      <input type="text" id="buyFormId" class="hidden" name="id">
 	      <div class="form-group">
-		<label for="buyFormName">Your Name</label>
-		<input type="text" class="form-control" id="buyFormName" placeholder="Enter your name" name="buyer">
+		<label for="buyModalName">Your Name</label>
+		<input type="text" class="form-control" name="buyer" id="buyModalName" placeholder="Enter your name">
 	      </div>
 	      <div class="form-group">
 		<label for="buyModalText">Message:</label>
@@ -68,13 +69,13 @@
 	  </div>
 	  <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Purchase!</button>
+            <button type="button" class="btn btn-primary" id="purchase-btn">Purchase!</button>
 	  </div>	
 	</div>
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="/boardscript.js"></script>

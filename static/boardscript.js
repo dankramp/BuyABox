@@ -52,6 +52,18 @@ function getRequest(url) {
     xhttp.send();
 }
 
+function postBuyBox() {
+    var form = $('#buyBoxForm');
+    console.log(form.serialize());
+    $.post("/buyBox", form.serialize())
+	.done(function(data) {
+	    console.log(data);
+	})
+	.fail(function() {
+	    // if it fails
+	});
+}
+
 function loadPage() {
     var board_title = $('#board-title');
     var board_div = $('#board-div');
@@ -91,9 +103,12 @@ $('#buyModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var value = button.data('value');
     var modal = $(this);
+    // Get box ID and populate hidden field
     modal.find('.modal-title').text('Purchase $' + value + ' box');
 });
 
 $('#buyModal').on('hidden.bs.modal', function (event) {
     $('#buyBoxForm').find("input[type=text], textarea").val("");
 })
+
+$('#purchase-btn').click(postBuyBox);
