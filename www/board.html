@@ -50,15 +50,26 @@
             </button>
 	  </div>
 	  <div class="modal-body">
-            <select id="buyModalSelect" class="form-control">
-	      <option value="default">-- Select a team --</option>
-	    </select>
-	    <textarea class="form-control" id="buyModalText" rows="3" placeholder="Add a message to the box for everyone to see!"></textarea>
+	    <form action="/buyBox" method="post" id="buyBoxForm">
+	      <div class="form-group">
+		<label for="buyFormName">Your Name</label>
+		<input type="text" class="form-control" id="buyFormName" placeholder="Enter your name" name="buyer">
+	      </div>
+	      <div class="form-group">
+		<label for="buyModalText">Message:</label>
+		<textarea class="form-control" name="message" id="buyModalText" rows="3" placeholder="Add a message to the box for everyone to see!"></textarea>
+	      </div>
+	      <div class="form-group">
+		<select id="buyModalSelect" class="form-control" name="team">
+		  <option value="default">-- Select a team --</option>
+		</select>
+	      </div>
+	    </form>
 	  </div>
 	  <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Purchase!</button>
-	  </div>
+	  </div>	
 	</div>
       </div>
     </div>

@@ -93,3 +93,7 @@ $('#buyModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('.modal-title').text('Purchase $' + value + ' box');
 });
+
+$('#buyModal').on('hidden.bs.modal', function (event) {
+    $('#buyBoxForm').find("input[type=text], textarea").val("");
+})
