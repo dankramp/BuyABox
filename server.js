@@ -36,10 +36,8 @@ app.listen('3000');
 console.log('working on 3000');
 
 app.post('/signup', passport.authenticate('signup', { session : false }) , async (req, res, next) => {
-  res.json({
-    message : 'Signup successful',
-    user : req.user
-  });
+ console.log(req.err);
+ res.redirect('/login');
 });
 
 app.post('/login', async (req, res, next) =>
@@ -62,7 +60,8 @@ app.post('/login', async (req, res, next) =>
         //Sign the JWT token and populate the payload with the user email and id
         const token = jwt.sign({ user : body },'top_secret');
         //Send back the token to the user
-        return res.json({ token });
+        res.cookie('buyaboxjwt',token);
+        res.json({"message":"success"})
       });
     }
     catch (error) {
@@ -197,11 +196,11 @@ app.post('/buyBox',function(req,res){
 
 
 app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname + '/www/login.html')); 
+    res.sendFile(path.join(__dirname + '/www/login.html'));
 });
 
 app.get('/signup', function (req, res) {
-    res.sendFile(path.join(__dirname + '/www/signup.html')); 
+    res.sendFile(path.join(__dirname + '/www/signup.html'));
 });
 
 app.get('/create', function (req, res) {
@@ -213,5 +212,5 @@ app.get('/test', function (req, res) {
     const pythonProcess = spawn('python3',["board_generator.py"]);
     pythonProcess.stdout.on('data', (data) => {
 	res.json(JSON.parse(data.toString()));
-    });    
+    });
 });

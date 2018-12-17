@@ -12,18 +12,31 @@ passport.use('signup', new localStrategy({
   passwordField : 'password'
 }, async (email, password, done) => {
     try {
-      const hash = await bcrypt.hash(password, 10);
-
-      //Save the information provided by the user to the the database
-      let userquery =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
-      db.query(userquery, [email,hash], function(err, result){
-        if (err){
+      let userquery1 = "SELECT username FROM `users` WHERE username = '" + email + "' ";
+      db.query(userquery1,function(err, result){
+        if(err){
           return done(err)
         }
-        else{
-          return done(null,result)
+        if(result.length!=0){
+          return done("user already exists")
         }
-      })
+        else{
+          let hashfun= bcrypt.hash(password, 10);
+          hashfun.then(function(hash){
+            //Save the information provided by the user to the the database
+            let userquery2 =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
+            db.query(userquery2, [email,hash], function(err, result){
+              if (err){
+                return done(err)
+              }
+              else{
+                return done(null,result)
+              }
+            })
+          })
+        }
+
+      });
       //Send the user information to the next middleware
     } catch (error) {
       done(error);
@@ -61,13 +74,17 @@ passport.use('login', new localStrategy({
   }
 
 }));
-
+var cookieExtractor = function(req) {
+  var token = null;
+  if (req && req.cookies) token = req.cookies['buyaboxjwt'];
+  return token;
+};
 //This verifies that the token sent by the user is valid
 passport.use(new JWTstrategy({
   //secret we used to sign our JWT
   secretOrKey : 'top_secret',
   //we expect the user to send the token as a query paramater with the name 'secret_token'
-  jwtFromRequest : ExtractJWT.fromUrlQueryParameter('secret_token')
+  jwtFromRequest : cookieExtractor
 }, async (token, done) => {
   try {
     console.log(token.user)

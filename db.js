@@ -1,9 +1,10 @@
+var dbInfo = require('./secrets.js');
 var mysql = require("mysql");
 var dbConnectionInfo = {
     connectionLimit : 10,
     host: 'localhost',
-    user: 'root',
-    password: 'capstone2018',
+    user: 'admin',
+    password: dbInfo.dbpass,
     database: 'buyabox'
   }
 
