@@ -7,6 +7,22 @@
     height: 600px;
     background: #555;
 }
+.home-card {
+    color: black;
+    background-color: white;
+    transition: background-color .5s;
+}
+.home-card:hover {
+    background-color: #ffd;
+}
+.link-no-style {
+	text-decoration: none;
+	color: inherit;
+}
+.link-no-style:hover {
+	text-decoration: none;
+	color: inherit;
+}
 .login-card {
     color: black;
 }
@@ -26,6 +42,16 @@
 .stats {
     background: #666;
     padding: 10px;
+}
+.title {
+    font-size: 8em;
+    text-align: center;
+}
+.subtitle {
+    font-size: 2em;
+    font-style: italic;
+    color: #ddd;
+    text-align: center;
 }
 .unpurchased-box, .purchased-box {
     text-align: center;
