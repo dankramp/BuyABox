@@ -61,7 +61,7 @@ app.post('/login', async (req, res, next) =>
         const token = jwt.sign({ user : body },'top_secret');
         //Send back the token to the user
         res.cookie('buyaboxjwt',token);
-        res.next();
+        return res.status(200);
       });
     }
     catch (error) {
