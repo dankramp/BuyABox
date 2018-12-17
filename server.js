@@ -60,7 +60,8 @@ app.post('/login', async (req, res, next) =>
         //Sign the JWT token and populate the payload with the user email and id
         const token = jwt.sign({ user : body },'top_secret');
         //Send back the token to the user
-        return res.cookie('buyaboxjwt',token);
+        res.cookie('buyaboxjwt',token);
+        res.next();
       });
     }
     catch (error) {
