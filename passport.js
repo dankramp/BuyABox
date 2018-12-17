@@ -12,21 +12,30 @@ passport.use('signup', new localStrategy({
   passwordField : 'password'
 }, async (email, password, done) => {
     try {
-	console.log("user attempting signup");
-	console.log(email);
-	console.log(password);
-      const hash = await bcrypt.hash(password, 10);
-
-      //Save the information provided by the user to the the database
-      let userquery =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
-      db.query(userquery, [email,hash], function(err, result){
-        if (err){
+      let userquery1 = "SELECT username FROM `users` WHERE username = '" + email + "' ";
+      db.query(userquery1,function(err, result){
+        if(err){
           return done(err)
         }
-        else{
-          return done(null,result)
+        if(result.length==0){
+          return done("user already exists")
         }
-      })
+        else{
+          const hash = await bcrypt.hash(password, 10);
+
+          //Save the information provided by the user to the the database
+          let userquery2 =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
+          db.query(userquery2, [email,hash], function(err, result){
+            if (err){
+              return done(err)
+            }
+            else{
+              return done(null,result)
+            }
+          })
+        }
+
+      });
       //Send the user information to the next middleware
     } catch (error) {
       done(error);
