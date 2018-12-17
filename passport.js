@@ -74,13 +74,17 @@ passport.use('login', new localStrategy({
   }
 
 }));
-
+var cookieExtractor = function(req) {
+  var token = null;
+  if (req && req.cookies) token = req.cookies['buyaboxjwt'];
+  return token;
+};
 //This verifies that the token sent by the user is valid
 passport.use(new JWTstrategy({
   //secret we used to sign our JWT
   secretOrKey : 'top_secret',
   //we expect the user to send the token as a query paramater with the name 'secret_token'
-  jwtFromRequest : ExtractJWT.fromUrlQueryParameter('secret_token')
+  jwtFromRequest : cookieExtractor
 }, async (token, done) => {
   try {
     console.log(token.user)
