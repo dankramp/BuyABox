@@ -21,17 +21,18 @@ passport.use('signup', new localStrategy({
           return done("user already exists")
         }
         else{
-          const hash = bcrypt.hash(password, 10);
-
-          //Save the information provided by the user to the the database
-          let userquery2 =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
-          db.query(userquery2, [email,hash], function(err, result){
-            if (err){
-              return done(err)
-            }
-            else{
-              return done(null,result)
-            }
+          let hash fun= bcrypt.hash(password, 10);
+          hashfun.then(function(hash){
+            //Save the information provided by the user to the the database
+            let userquery2 =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
+            db.query(userquery2, [email,hash], function(err, result){
+              if (err){
+                return done(err)
+              }
+              else{
+                return done(null,result)
+              }
+            })
           })
         }
 
