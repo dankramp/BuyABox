@@ -12,6 +12,9 @@ passport.use('signup', new localStrategy({
   passwordField : 'password'
 }, async (email, password, done) => {
     try {
+	console.log("user attempting signup");
+	console.log(email);
+	console.log(password);
       const hash = await bcrypt.hash(password, 10);
 
       //Save the information provided by the user to the the database

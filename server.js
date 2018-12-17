@@ -36,10 +36,8 @@ app.listen('3000');
 console.log('working on 3000');
 
 app.post('/signup', passport.authenticate('signup', { session : false }) , async (req, res, next) => {
-  res.json({
-    message : 'Signup successful',
-    user : req.user
-  });
+ console.log(req.err);
+ res.redirect('/login');
 });
 
 app.post('/login', async (req, res, next) =>
