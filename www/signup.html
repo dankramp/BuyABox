@@ -18,7 +18,7 @@
 	<div class="card-body">
 	  <h3 class="card-title">Create New Account</h3>
 	  <br />
-	  <form action="/signup" method="post">
+	  <form action="/signup" method="post" id="signup-form">
 	    <div class="form-group">
 	      <label for="inputEmail">Email address</label>
 	      <input type="email" class="form-control" id="inputEmail" placeholder="Enter Email">
@@ -32,7 +32,7 @@
 	      <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm Password">
 	    </div>
 	    <div class="alert alert-danger" id="err-msg" role="alert" style="display: none;"></div>
-	    <button type="button" class="btn btn-primary" id="reg-btn">Register</button>
+	    <button type="submit" class="btn btn-primary" id="reg-btn">Register</button>
 	  </form>
 	  <h6 class="card-subtitle mb-2 text-muted"><a href="/login" class="card-link">...or login to an existing account</a></h6>
 	</div>
