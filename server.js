@@ -139,7 +139,7 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
   let name=req.body.name;
   let teams=req.body.teams;
   let query = "INSERT INTO `boards` (description, owner, name, teams) VALUES (?, ?, ?, ?)";
-  db.query(query, [desc,owner,name,JSON.stringify(teams)], function(err, result){
+  db.query(query, [desc,owner,name,teams], function(err, result){
     if (err){
       return res.status(500).send(err)
     }
@@ -202,6 +202,10 @@ app.get('/login', function (req, res) {
 
 app.get('/signup', function (req, res) {
     res.sendFile(path.join(__dirname + '/www/signup.html')); 
+});
+
+app.get('/create', function (req, res) {
+    res.sendFile(path.join(__dirname + '/www/create_board.html'));
 });
 
 app.get('/test', function (req, res) {

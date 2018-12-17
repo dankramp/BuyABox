@@ -7,6 +7,9 @@
     height: 600px;
     background: #555;
 }
+.create-card {
+    color: black;
+}
 .home-card {
     color: black;
     background-color: white;
@@ -14,6 +17,10 @@
 }
 .home-card:hover {
     background-color: #ffd;
+}
+.invalid-form {
+    font-size: .8em;
+    color: red;
 }
 .link-no-style {
 	text-decoration: none;
