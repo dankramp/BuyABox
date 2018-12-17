@@ -17,7 +17,7 @@ passport.use('signup', new localStrategy({
         if(err){
           return done(err)
         }
-        if(result.length==0){
+        if(result.length!=0){
           return done("user already exists")
         }
         else{
