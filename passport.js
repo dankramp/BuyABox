@@ -21,7 +21,7 @@ passport.use('signup', new localStrategy({
           return done("user already exists")
         }
         else{
-          const hash = await bcrypt.hash(password, 10);
+          const hash = bcrypt.hash(password, 10);
 
           //Save the information provided by the user to the the database
           let userquery2 =  "INSERT INTO `users` (username, password) VALUES (?, ?)";
