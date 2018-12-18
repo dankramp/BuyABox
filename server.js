@@ -89,7 +89,7 @@ app.get('/getBoard', function (req, res) {
     }
     else{
       if (!result.length){
-        res.status(500).send('Board Not Found')
+        res.status(404).send('Board Not Found')
       }else{
         console.log(result[0]['teams'])
         let boxquery = "SELECT * FROM `boxes` WHERE board_id = '" + boardId + "' ";
