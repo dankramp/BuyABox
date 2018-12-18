@@ -195,12 +195,22 @@ app.post('/buyBox',function(req,res){
 });
 
 
-app.get('/login', function (req, res) {
+app.get('/login', middleware, function (req, res) {
+  if (req.authenticated) {
+    res.redirect('/');
+  }
+  else{
     res.sendFile(path.join(__dirname + '/www/login.html'));
+  }
 });
 
-app.get('/signup', function (req, res) {
+app.get('/signup', middleware, function (req, res) {
+  if (req.authenticated) {
+    res.redirect('/');
+  }
+  else{
     res.sendFile(path.join(__dirname + '/www/signup.html'));
+  }
 });
 
 app.get('/test', function (req, res) {

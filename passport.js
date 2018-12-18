@@ -94,3 +94,10 @@ passport.use(new JWTstrategy({
     done(error);
   }
 }));
+
+var middleware = function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    req.authenticated = !! user;
+    next();
+  })(req, res, next);
+};
