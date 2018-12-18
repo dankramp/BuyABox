@@ -213,8 +213,13 @@ app.get('/signup', pass.middleware, function (req, res) {
   }
 });
 
-app.get('/create', function (req, res) {
-    res.sendFile(path.join(__dirname + '/www/create_board.html'));
+app.get('/create', middleware, function (req, res) {
+    if(req.authenticated){
+      res.sendFile(path.join(__dirname + '/www/create_board.html'));
+    }
+    else{
+      res.redirect('/login');
+    }
 });
 
 app.get('/test', function (req, res) {
