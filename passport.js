@@ -55,19 +55,25 @@ passport.use('login', new localStrategy({
     let userquery = "SELECT * FROM `users` WHERE username = '" + email + "' "
     console.log(userquery)
     db.query(userquery,function(err,result){
-      console.log(result)
+      
       if(err || !result.length){
         return done(null, false, { message : 'User not found'});
       }
-      const compare = bcrypt.compare(password, result[0].password);
-      if(!compare){
-        return done(null, false, { message : 'Wrong Password'});
-      }
+      console.log(result[0].password);
+      console.log("found user");
+      bcrypt.compare(password, result[0].password,function(err,compare){
+        if(err || !compare){
+          return done(null,false,{message:'Wrong Password'});
+	}
+        
       var user = {
         "email": result[0].username,
         "_id" : result[0].id
       }
       return done(null, user, { message : 'Logged in Successfully'});
+
+      });
+
     })
   }catch(error){
     done(error)
@@ -76,7 +82,8 @@ passport.use('login', new localStrategy({
 }));
 var cookieExtractor = function(req) {
   var token = null;
-  if (req && req.cookies) token = req.cookies['buyaboxjwt'];
+  console.log(req.cookies);
+  if (req && req.headers && req.headers.cookie) token = req.cookies['buyaboxjwt'];
   return token;
 };
 //This verifies that the token sent by the user is valid
@@ -91,6 +98,7 @@ passport.use(new JWTstrategy({
     //Pass the user details to the next middleware
     return done(null, token.user);
   } catch (error) {
+	console.log(error);
     done(error);
   }
 }));

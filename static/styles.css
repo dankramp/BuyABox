@@ -7,6 +7,29 @@
     height: 600px;
     background: #555;
 }
+.create-card {
+    color: black;
+}
+.home-card {
+    color: black;
+    background-color: white;
+    transition: background-color .5s;
+}
+.home-card:hover {
+    background-color: #ffd;
+}
+.invalid-form {
+    font-size: .8em;
+    color: red;
+}
+.link-no-style {
+	text-decoration: none;
+	color: inherit;
+}
+.link-no-style:hover {
+	text-decoration: none;
+	color: inherit;
+}
 .login-card {
     color: black;
 }
@@ -26,6 +49,19 @@
 .stats {
     background: #666;
     padding: 10px;
+}
+.subtitle {
+    font-size: 2em;
+    font-style: italic;
+    color: #ddd;
+    text-align: center;
+}
+.team-name {
+    display: inline;
+}
+.title {
+    font-size: 8em;
+    text-align: center;
 }
 .unpurchased-box, .purchased-box {
     text-align: center;
