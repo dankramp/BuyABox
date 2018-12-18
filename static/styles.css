@@ -50,14 +50,17 @@
     background: #666;
     padding: 10px;
 }
-.title {
-    font-size: 8em;
-    text-align: center;
-}
 .subtitle {
     font-size: 2em;
     font-style: italic;
     color: #ddd;
+    text-align: center;
+}
+.team-name {
+    display: inline;
+}
+.title {
+    font-size: 8em;
     text-align: center;
 }
 .unpurchased-box, .purchased-box {

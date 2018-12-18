@@ -12,6 +12,9 @@ function updateBoard(board_div) {
 	var box = data['boxes'][i];
 	if (box['bought']) { // box has been bought
 	    var t = teams[box['team']];
+	    if (!t) {
+		t = {'color': '#9fb'};
+	    }
 	    board_html += "<a class='popover-dismiss col-2 purchased-box' role='button' tabindex='0' data-toggle='popover' data-trigger='focus' title='" + box['buyer'] + "' data-content=\"" + box['message'] + "\" style='animation-delay: " + i / 64 + "s; background: " + t['color'] + ";'>$" + box['value'] + "</a>";
 	    amt_raised += box['value'];
 	    t['amount'] += box['value'];
@@ -39,6 +42,29 @@ function updateStats(amt_raised) {
     $('#amt-raised').empty().append("$" + amt_raised);
     var percentage = Math.floor(amt_raised / total_amt * 100);
     $('#raised-progress-bar').width(percentage + "%").prop("aria-valuenow", "" + percentage);
+
+    // Teams
+    if (Object.keys(teams).length == 2) {
+	var team_html = "",
+	    team;
+	for (team in teams) {
+	    team_html += "<p class='team-name' style='color: " + teams[team]['color'] + ";'>" + team + ": </p><b>$" + teams[team]['amount'] + "</b></br>";
+	}
+	team_html += "<div class='pbar'>";
+	var i = 0;
+	for (team in teams) {
+	    var width = (teams[team]['amount'] / amt_raised) * 100 + "%";
+	    if (i == 0) {
+		width = "2000px"
+	    }
+	    i++;
+	    team_html += "<div style='display: table-cell; width: " + width + "; background-color: " + teams[team]['color'] + "; height: 50px'></div>";
+	}
+	team_html += "</div>";
+
+	var tb = $('#team-breakdown');
+	tb.append(team_html).show();
+    }
 }
 
 function getRequest(url) {
