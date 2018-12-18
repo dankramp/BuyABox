@@ -213,7 +213,7 @@ app.get('/signup', pass.middleware, function (req, res) {
   }
 });
 
-app.get('/create', middleware, function (req, res) {
+app.get('/create', pass.middleware, function (req, res) {
     if(req.authenticated){
       res.sendFile(path.join(__dirname + '/www/create_board.html'));
     }
