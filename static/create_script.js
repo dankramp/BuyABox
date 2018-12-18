@@ -55,15 +55,15 @@ function submit() {
 	    console.log(d);
 	    success(d);
 	})
-	.fail(function() {
-	    console.log("fail");
+	.fail(function(d) {
+	    console.log(d);
 	    // if it fails
 	    $('#badModal').modal('show');
 	});
 }
 
 function success(d) {    
-    window.location.href = "/board/" + d['id'];
+    window.location.href = "/board/" + JSON.parse(d['responseText'])['id'];
 }
 
 

@@ -17,7 +17,7 @@ function updateBoard(board_div) {
 	    t['amount'] += box['value'];
 
 	} else { // not bought
-	    board_html += "<a data-toggle='modal' data-target='#buyModal' data-value='" + box['value'] + "' data-id='" + box['uuid'] + "' class='col-2 unpurchased-box' style='animation-delay: " + i / 64 + "s;'>$" + box['value'] + "</a>";
+	    board_html += "<a data-toggle='modal' data-target='#buyModal' data-value='" + box['value'] + "' data-id='" + box['id'] + "' class='col-2 unpurchased-box' style='animation-delay: " + i / 64 + "s;'>$" + box['value'] + "</a>";
 	}
     }
     board_html += "</div>";
