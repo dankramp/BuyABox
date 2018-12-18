@@ -86,7 +86,8 @@ function buy_success() {
     box['team'] = $('#buyModalSelect').val();
     
     $('#buyModal').modal('hide');
-    updateBoard($('#board-div'));
+    var amt_raised = updateBoard($('#board-div'));
+    updateStats(amt_raised);
 }
 
 function loadPage() {
