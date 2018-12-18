@@ -62,8 +62,9 @@ function submit() {
 	});
 }
 
-function success(d) {    
-    window.location.href = "/board/" + JSON.parse(d['responseText'])['id'];
+function success(d) {
+    console.log(typeof d);
+    window.location.href = "/board/" + d.id;
 }
 
 

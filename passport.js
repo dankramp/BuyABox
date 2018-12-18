@@ -55,7 +55,7 @@ passport.use('login', new localStrategy({
     let userquery = "SELECT * FROM `users` WHERE username = '" + email + "' "
     console.log(userquery)
     db.query(userquery,function(err,result){
-      
+
       if(err || !result.length){
         return done(null, false, { message : 'User not found'});
       }
@@ -65,7 +65,7 @@ passport.use('login', new localStrategy({
         if(err || !compare){
           return done(null,false,{message:'Wrong Password'});
 	}
-        
+
       var user = {
         "email": result[0].username,
         "_id" : result[0].id
@@ -102,3 +102,12 @@ passport.use(new JWTstrategy({
     done(error);
   }
 }));
+
+var middleware = function(req, res, next) {
+  passport.authenticate('jwt', function(err, user, info) {
+    req.authenticated = !! user;
+    next();
+  })(req, res, next);
+};
+
+exports.middleware = middleware;

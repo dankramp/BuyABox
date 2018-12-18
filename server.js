@@ -32,7 +32,7 @@ boardRouter.route('/:id')
 app.use('/board', boardRouter);
 
 
-require('./passport.js');
+var pass = require('./passport.js');
 
 app.listen('3000');
 console.log('working on 3000');
@@ -157,8 +157,11 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
           return res.status(500).send(err)
         }
         else{
-          res.json({'status':'success',
-                    'id':board_id})
+	  res.json({
+            "id":board_id,
+            "status":"success"
+          });
+         
         }
       })
     }
@@ -195,16 +198,31 @@ app.post('/buyBox',function(req,res){
 });
 
 
-app.get('/login', function (req, res) {
+app.get('/login', pass.middleware, function (req, res) {
+  if (req.authenticated) {
+    res.redirect('/');
+  }
+  else{
     res.sendFile(path.join(__dirname + '/www/login.html'));
+  }
 });
 
-app.get('/signup', function (req, res) {
+app.get('/signup', pass.middleware, function (req, res) {
+  if (req.authenticated) {
+    res.redirect('/');
+  }
+  else{
     res.sendFile(path.join(__dirname + '/www/signup.html'));
+  }
 });
 
-app.get('/create', function (req, res) {
-    res.sendFile(path.join(__dirname + '/www/create_board.html'));
+app.get('/create', pass.middleware, function (req, res) {
+    if(req.authenticated){
+      res.sendFile(path.join(__dirname + '/www/create_board.html'));
+    }
+    else{
+      res.redirect('/login');
+    }
 });
 
 app.get('/test', function (req, res) {
