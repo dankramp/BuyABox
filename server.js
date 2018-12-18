@@ -2,6 +2,7 @@ var express = require('express');
 var mysql = require('mysql')
 var app = express();
 var path = require('path');
+var cookies = require("cookie-parser");
 
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -21,6 +22,7 @@ app.use(express.static(__dirname + '/www'));
 app.use(express.static(__dirname + '/static'));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookies());
 
 boardRouter.route('/:id')
     .get(function(req, res) {
@@ -36,20 +38,18 @@ app.listen('3000');
 console.log('working on 3000');
 
 app.post('/signup', passport.authenticate('signup', { session : false }) , async (req, res, next) => {
- console.log(req.err);
  res.redirect('/login');
 });
 
 app.post('/login', async (req, res, next) =>
 {
-  console.log(req.body)
   passport.authenticate('login', async (err, user, info) =>
   {
     try {
       if(err || !user){
         console.log(info)
         const error = new Error('An Error occured')
-        return next(error);
+        return res.redirect('/');
       }
       req.login(user, { session : false }, async (error) =>
       {
@@ -61,7 +61,7 @@ app.post('/login', async (req, res, next) =>
         const token = jwt.sign({ user : body },'top_secret');
         //Send back the token to the user
         res.cookie('buyaboxjwt',token);
-        res.json({"message":"success"})
+        res.redirect('/')
       });
     }
     catch (error) {
