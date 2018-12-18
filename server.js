@@ -157,8 +157,11 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
           return res.status(500).send(err)
         }
         else{
-          res.json({'status':'success',
-                    'id':board_id})
+	  res.json({
+            "id":board_id,
+            "status":"success"
+          });
+         
         }
       })
     }
