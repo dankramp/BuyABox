@@ -85,7 +85,7 @@ app.get('/getBoard', function (req, res) {
   let boardquery = "SELECT * FROM `boards` WHERE id = '" + boardId + "' ";
   db.query(boardquery, (err,result)=>{
     if (err){
-      return res.status(500).send(err)
+      return res.status(404).send(err)
     }
     else{
       if (!result.length){
@@ -224,8 +224,12 @@ app.get('/signup', pass.middleware, function (req, res) {
   }
 });
 
+app.get('/404', function (req, res) {
+    res.sendFile(path.join(__dirname + '/www/404.html'));
+});
+
 //Create board page
-app.get('/create', middleware, function (req, res) {
+app.get('/create', pass.middleware, function (req, res) {
     //Redirect if not logged in
 
     if(req.authenticated){

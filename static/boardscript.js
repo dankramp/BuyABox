@@ -4,6 +4,11 @@ var data = undefined;
 var try_test = true;
 var teams = {};
 
+
+/*
+* Draw the board with updated box data
+* Return sum of all bought box values
+*/
 function updateBoard(board_div) {
     var amt_raised = 0;
     var board_html = "<div class='row'>";
@@ -12,11 +17,11 @@ function updateBoard(board_div) {
 	teams[team]['amount'] = 0;
     }
     var i;
-    for (i = 0; i < 36; i++) {
+    for (i = 0; i < 36; i++) { // Loop through all boxes to draw
 	var box = data['boxes'][i];
 	if (box['bought']) { // box has been bought
 	    var t = teams[box['team']];
-	    if (!t) {
+	    if (!t) { // If no team assigned, make bought color green
 		t = {'color': '#9fb'};
 	    }
 	    board_html += "<a class='popover-dismiss col-2 purchased-box' role='button' tabindex='0' data-toggle='popover' data-trigger='focus' title='" + box['buyer'] + "' data-content=\"" + box['message'] + "\" style='animation-delay: " + i / 64 + "s; background: " + t['color'] + ";'>$" + box['value'] + "</a>";
@@ -37,6 +42,10 @@ function updateBoard(board_div) {
     return amt_raised;
 }
 
+
+/*
+* Update stats bar with accurate progress and information
+*/
 function updateStats(amt_raised) {
     const total_amt = 666;
     // Description
@@ -76,31 +85,32 @@ function getRequest(url) {
     xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 	    data = JSON.parse(this.responseText);
-	    console.log("calling loadPage")
 	    loadPage();
-	} else if (this.status == 500 && try_test) {
-	    try_test = false;
-	    getRequest("/test");
+	} else if (this.status == 404) {
+	    window.location = "/404";
 	}
     };
     xhttp.open("GET", url, true);
     xhttp.send();
 }
 
+/*
+* Try to submit buy box form
+*/
 function postBuyBox() {
     var form = $('#buyBoxForm');
     $.post("/buyBox", form.serialize())
 	.done(function(data) {
-	    console.log(data);
 	    buy_success();
 	})
 	.fail(function() {
-	    console.log("fail");
-	    // if it fails
 	    $('#badModal').modal('show');
 	});
 }
 
+/*
+* If purchase is successful, update board and stats
+*/
 function buy_success() {
     let id = $('#buyModalId').val();
     var i = 0;
@@ -119,6 +129,9 @@ function buy_success() {
     updateStats(amt_raised);
 }
 
+/*
+* Initial function to load board
+*/
 function loadPage() {
     var board_title = $('#board-title');
     var board_div = $('#board-div');
@@ -160,8 +173,10 @@ $('#buyModal').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('Purchase $' + value + ' box');
 });
 
+// When modal is hidden, clear fields
 $('#buyModal').on('hidden.bs.modal', function (event) {
     $('#buyBoxForm').find("input[type=text], textarea").val("");
 })
 
+// Event listener
 $('#purchase-btn').click(postBuyBox);
