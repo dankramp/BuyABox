@@ -58,15 +58,17 @@ function updateStats(amt_raised) {
 
     // Teams
     if (Object.keys(teams).length == 2) {
+	var team_total = 0;
 	var team_html = "<h2>Team Breakdown:</h2>",
 	    team;
 	for (team in teams) {
+	    team_total += teams[team]['amount'];
 	    team_html += "<p class='team-name' style='color: " + teams[team]['color'] + ";'>" + team + ": </p><b>$" + teams[team]['amount'] + "</b></br>";
 	}
 	team_html += "<div class='pbar'>";
 	var i = 0;
 	for (team in teams) {
-	    var width = (teams[team]['amount'] / amt_raised) * 100 + "%";
+	    var width = (teams[team]['amount'] / team_total) * 100 + "%";
 	    if (i == 0) {
 		width = "2000px"
 	    }
