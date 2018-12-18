@@ -32,7 +32,7 @@ boardRouter.route('/:id')
 app.use('/board', boardRouter);
 
 
-require('./passport.js');
+var pass = require('./passport.js');
 
 app.listen('3000');
 console.log('working on 3000');
@@ -195,7 +195,7 @@ app.post('/buyBox',function(req,res){
 });
 
 
-app.get('/login', middleware, function (req, res) {
+app.get('/login', pass.middleware, function (req, res) {
   if (req.authenticated) {
     res.redirect('/');
   }
@@ -204,7 +204,7 @@ app.get('/login', middleware, function (req, res) {
   }
 });
 
-app.get('/signup', middleware, function (req, res) {
+app.get('/signup', pass.middleware, function (req, res) {
   if (req.authenticated) {
     res.redirect('/');
   }
