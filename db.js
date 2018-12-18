@@ -1,5 +1,6 @@
 var dbInfo = require('./secrets.js');
 var mysql = require("mysql");
+//DB connection information and pool for processes
 var dbConnectionInfo = {
     connectionLimit : 10,
     host: 'localhost',

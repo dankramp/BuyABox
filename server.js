@@ -11,6 +11,7 @@ const db = require('./db.js')
 
 var boardRouter = express.Router();
 
+//Test mode for debugging
 var TEST_MODE = true;
 
 app.use(bodyParser.urlencoded({
@@ -24,6 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookies());
 
+//Route to the given board id
 boardRouter.route('/:id')
     .get(function(req, res) {
 	res.sendFile(path.join(__dirname + '/www/board.html'));
@@ -37,10 +39,12 @@ var pass = require('./passport.js');
 app.listen('3000');
 console.log('working on 3000');
 
+//Signup post request using passport
 app.post('/signup', passport.authenticate('signup', { session : false }) , async (req, res, next) => {
  res.redirect('/login');
 });
 
+//Login post request using passport
 app.post('/login', async (req, res, next) =>
 {
   passport.authenticate('login', async (err, user, info) =>
@@ -70,6 +74,7 @@ app.post('/login', async (req, res, next) =>
   })(req, res, next);
 });
 
+//Get request for specific board
 app.get('/getBoard', function (req, res) {
   if(!req.query.id){
     res.status(500).send('Board ID Required')
@@ -105,6 +110,7 @@ app.get('/getBoard', function (req, res) {
 
 });
 
+//get Box request for specific box id
 app.get('/getBox', function (req, res) {
   if(!req.query.id){
     res.status(500).send('Box ID Required')
@@ -125,6 +131,7 @@ app.get('/getBox', function (req, res) {
 
 });
 
+//Create board request, requiring a logged in user
 app.post('/createBoard',passport.authenticate('jwt', { session : false }), async (req, res, next) => {
   console.log(req.user.email)
   console.log(req.body)
@@ -157,8 +164,7 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
           return res.status(500).send(err)
         }
         else{
-          res.json({'status':'success',
-                    'id':board_id})
+          res.redirect('/board/'+board_id)
         }
       })
     }
@@ -166,6 +172,7 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
 
 });
 
+//Buy a box request
 app.post('/buyBox',function(req,res){
   if(!req.body.id || !req.body.buyer || !req.body.message || !req.body.team){
       res.status(500).send('Invalid Parameters')
@@ -194,8 +201,9 @@ app.post('/buyBox',function(req,res){
   });
 });
 
-
+//Login page
 app.get('/login', pass.middleware, function (req, res) {
+  //Redirect if logged in
   if (req.authenticated) {
     res.redirect('/');
   }
@@ -204,7 +212,9 @@ app.get('/login', pass.middleware, function (req, res) {
   }
 });
 
+//Signup page
 app.get('/signup', pass.middleware, function (req, res) {
+  //Redirect if logged in
   if (req.authenticated) {
     res.redirect('/');
   }
@@ -213,7 +223,9 @@ app.get('/signup', pass.middleware, function (req, res) {
   }
 });
 
+//Create board page
 app.get('/create', middleware, function (req, res) {
+    //Redirect if not logged in
     if(req.authenticated){
       res.sendFile(path.join(__dirname + '/www/create_board.html'));
     }

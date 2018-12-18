@@ -6,6 +6,7 @@ const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 var db = require('./db.js')
 
+//Passport middleware extensions for JWT
 
 passport.use('signup', new localStrategy({
   usernameField : 'email',
@@ -80,6 +81,7 @@ passport.use('login', new localStrategy({
   }
 
 }));
+//Extracts JWT cookie
 var cookieExtractor = function(req) {
   var token = null;
   console.log(req.cookies);
