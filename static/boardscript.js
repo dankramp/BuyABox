@@ -7,6 +7,10 @@ var teams = {};
 function updateBoard(board_div) {
     var amt_raised = 0;
     var board_html = "<div class='row'>";
+    // Reset team amount
+    for (var team in teams) {
+	teams[team]['amount'] = 0;
+    }
     var i;
     for (i = 0; i < 36; i++) {
 	var box = data['boxes'][i];
@@ -45,7 +49,7 @@ function updateStats(amt_raised) {
 
     // Teams
     if (Object.keys(teams).length == 2) {
-	var team_html = "",
+	var team_html = "<h2>Team Breakdown:</h2>",
 	    team;
 	for (team in teams) {
 	    team_html += "<p class='team-name' style='color: " + teams[team]['color'] + ";'>" + team + ": </p><b>$" + teams[team]['amount'] + "</b></br>";
@@ -63,7 +67,7 @@ function updateStats(amt_raised) {
 	team_html += "</div>";
 
 	var tb = $('#team-breakdown');
-	tb.append(team_html).show();
+	tb.empty().append(team_html).show();
     }
 }
 
@@ -85,7 +89,6 @@ function getRequest(url) {
 
 function postBuyBox() {
     var form = $('#buyBoxForm');
-    console.log(form.serialize());
     $.post("/buyBox", form.serialize())
 	.done(function(data) {
 	    console.log(data);

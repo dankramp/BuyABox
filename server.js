@@ -165,6 +165,7 @@ app.post('/createBoard',passport.authenticate('jwt', { session : false }), async
         }
         else{
           res.redirect('/board/'+board_id)
+
         }
       })
     }
@@ -226,6 +227,7 @@ app.get('/signup', pass.middleware, function (req, res) {
 //Create board page
 app.get('/create', middleware, function (req, res) {
     //Redirect if not logged in
+
     if(req.authenticated){
       res.sendFile(path.join(__dirname + '/www/create_board.html'));
     }
