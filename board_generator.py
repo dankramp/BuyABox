@@ -11,7 +11,7 @@ board = {
         'boys': '#46f',
         'girls': '#fbd',
     },
-    'boxes': [],
+    'id': '20',
 }
 
 boxes = []
@@ -24,9 +24,9 @@ for i in range(36):
         "buyer": "Grandma" if bought else None,
         "message": "I'll buy you anything any day" if bought else None,
         "team": ("girls" if random() < .7 else "boys") if bought else None,
-        "uuid": str(uuid.uuid4()),
+        "id": str(uuid.uuid4()),
+        "board_id": 20
     }
-    board['boxes'].append(box['uuid'])
     boxes.append(box)
 
 response = {"board": board,

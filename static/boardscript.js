@@ -76,7 +76,7 @@ function buy_success() {
     let id = $('#buyModalId').val();
     var i = 0;
     for (; i < 36; i++) {
-	if (data['board']['boxes'][i] == id)
+	if (data['boxes'][i]['id'] == id)
 	    break;
     }
     var box = data['boxes'][i];
